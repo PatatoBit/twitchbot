@@ -7,7 +7,7 @@ dotenv.config({
   default_node_env: "development",
 })
 
-const investIntervalMs = 60000
+const investIntervalMs = 304000 * 2 //60000
 const farmIntervalMs = 304000
 const stopTime = 2 * 60 * 60 * 1000
 let running = true
@@ -37,9 +37,9 @@ async function main() {
     tokenData
   )
 
-  function randomIntFromInterval() { 
-    return Math.floor(Math.random() * (27 - 7 + 1) + 7)
-  }
+  // function randomIntFromInterval() { 
+  //   return Math.floor(Math.random() * (27 - 7 + 1) + 7)
+  // }
 
   const chatClient = new ChatClient(auth, { channels: [channel] })
 
@@ -52,7 +52,7 @@ async function main() {
         return
       }
       
-      const amounts = randomIntFromInterval()
+      const amounts = 1
       const invest = `!invest ${amounts}`
       await chatClient.say(channel, invest).then(
         () => {
